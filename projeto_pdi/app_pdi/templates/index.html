@@ -19,6 +19,11 @@
                         <input type="email" name="email" placeholder="Email" required />
                         <input type="password" name="senha" placeholder="Senha" required />
                         <input type="password" name="confirmar_senha" placeholder="Confirmar Senha" required />
+                        {% if erro %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ erro }}
+                            </div>
+                        {% endif %}
                         <button type="submit" class="submit">Cadastrar</button>
                     </form>
                     <h3>Já possui conta?</h3>
@@ -29,6 +34,11 @@
                         {% csrf_token %}
                         <input type="email" name="email" placeholder="Email" required />
                         <input type="password" name="senha" placeholder="Senha" required />
+                        {% if erro %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ erro }}
+                            </div>
+                        {% endif %}
                         <button type="submit" class="submit">Entrar</button>
                     </form>
                     <h3>Não possui conta?</h3>
