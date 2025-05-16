@@ -9,6 +9,9 @@ def show_login(request):
 def show_cadastro(request):
     return render(request, 'index.html', {'page': 'cadastro'})
 
+def show_home(request):
+    return render(request, 'home.html', {'page': 'home'})
+
 def cadastro_view(request):
     if request.method == "POST":
         nome = request.POST.get("nome")
