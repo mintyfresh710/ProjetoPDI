@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar PDI - {{ pdi.nome }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visualização do PDI</h1>
+            <p>Confira os dados antes de gerar o PDF final</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-section">
+                <h2>Informações Pessoais</h2>
+                <div class="section-content">
+                    <p><strong>Nome:</strong> {{ pdi.nome }}</p>
+                    <p><strong>RA:</strong> {{ pdi.ra }}</p>
+                    <p><strong>Curso:</strong> {{ pdi.curso }}</p>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Perfil e Competências</h2>
+                <div class="section-content">
+                    <p><strong>Perfil:</strong></p>
+                    <p>{{ pdi.perfil|linebreaks }}</p>
+                    
+                    <p><strong>Competências:</strong></p>
+                    <p>{{ pdi.competencias|linebreaks }}</p>
+                    
+                    <p><strong>Gaps a serem trabalhados:</strong></p>
+                    <p>{{ pdi.gaps|linebreaks }}</p>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Minhas Conquistas</h2>
+                <div class="section-content">
+                    {% if pdi.linkedin %}
+                    <p><strong>LinkedIn:</strong> <a href="{{ pdi.linkedin }}" target="_blank">{{ pdi.linkedin }}</a></p>
+                    {% endif %}
+                    
+                    {% if pdi.certificados %}
+                    <p><strong>Certificados:</strong></p>
+                    <p>{{ pdi.certificados|linebreaks }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Jornada de Desenvolvimento</h2>
+                <div class="section-content">
+                    <p><strong>Início da Jornada de Desenvolvimento:</strong></p>
+                    <p>{{ pdi.inicio_jornada|linebreaks }}</p>
+                    
+                    <p><strong>Desenvolvimento Permanente:</strong></p>
+                    <p>{{ pdi.desenvolvimento_permanente|linebreaks }}</p>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Resultados Alcançados</h2>
+                <div class="section-content">
+                    {% if pdi.jobs_desenvolvidos %}
+                    <p><strong>Jobs Desenvolvidos:</strong></p>
+                    <p>{{ pdi.jobs_desenvolvidos|linebreaks }}</p>
+                    {% endif %}
+                    
+                    <h3>Pitchs dos Projetos Integradores</h3>
+                    <div class="semester-container">
+                        {% if pdi.pitch_1_semestre %}
+                        <div>
+                            <p><strong>1º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_1_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_2_semestre %}
+                        <div>
+                            <p><strong>2º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_2_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_3_semestre %}
+                        <div>
+                            <p><strong>3º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_3_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_4_semestre %}
+                        <div>
+                            <p><strong>4º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_4_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_5_semestre %}
+                        <div>
+                            <p><strong>5º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_5_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_6_semestre %}
+                        <div>
+                            <p><strong>6º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_6_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_7_semestre %}
+                        <div>
+                            <p><strong>7º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_7_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_8_semestre %}
+                        <div>
+                            <p><strong>8º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_8_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_9_semestre %}
+                        <div>
+                            <p><strong>9º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_9_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if pdi.pitch_10_semestre %}
+                        <div>
+                            <p><strong>10º Semestre:</strong></p>
+                            <p>{{ pdi.pitch_10_semestre|linebreaks }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if pdi.link_tcc %}
+                    <p><strong>Link do TCC:</strong> <a href="{{ pdi.link_tcc }}" target="_blank">{{ pdi.link_tcc }}</a></p>
+                    {% endif %}
+                    
+                    {% if pdi.acoes_voluntarias %}
+                    <p><strong>Ações Voluntárias:</strong></p>
+                    <p>{{ pdi.acoes_voluntarias|linebreaks }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="{% url 'formulario' %}" class="btn btn-primary">Voltar ao Formulário</a>
+                <a href="{% url 'gerar_pdf' pdi.id %}" class="btn btn-success">Gerar PDF</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
