@@ -1,0 +1,197 @@
+{% include "base.html" %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Desenvolvimento Individual Profissional - PDI</title>
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+</head>
+<body>
+    <div class="form_container">
+        <div class="header">
+            <h1>Plano de Desenvolvimento Individual Profissional - PDI</h1>
+            <p>Preencha o formulário com suas informações profissionais</p>
+        </div>
+
+        <div class="form-container">
+            <form id="pdi-form" method="post" action="{% url 'salvar_pdi' %}">
+                {% csrf_token %}
+                
+                <!-- Informações Pessoais -->
+                <div class="form-section">
+                    <h2>Informações Pessoais</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo*</label>
+                            <input type="text" id="nome" name="nome" class="form-control" required>
+                            <div id="nome-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ra">RA (Registro Acadêmico)*</label>
+                            <input type="text" id="ra" name="ra" class="form-control" required>
+                            <div id="ra-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="curso">Curso*</label>
+                            <input type="text" id="curso" name="curso" class="form-control" required>
+                            <div id="curso-error" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perfil e Competências -->
+                <div class="form-section">
+                    <h2>Perfil e Competências</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="perfil">Perfil*</label>
+                            <textarea id="perfil" name="perfil" class="form-control" required></textarea>
+                            <div id="perfil-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="competencias">Competências*</label>
+                            <textarea id="competencias" name="competencias" class="form-control" required></textarea>
+                            <div id="competencias-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gaps">Gaps a serem trabalhados*</label>
+                            <textarea id="gaps" name="gaps" class="form-control" required></textarea>
+                            <div id="gaps-error" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Minhas Conquistas -->
+                <div class="form-section">
+                    <h2>Minhas Conquistas</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn (URL)</label>
+                            <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/seu-perfil">
+                            <div id="linkedin-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="certificados">Certificados</label>
+                            <textarea id="certificados" name="certificados" class="form-control" placeholder="Liste seus certificados, um por linha"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jornada de Desenvolvimento -->
+                <div class="form-section">
+                    <h2>Jornada de Desenvolvimento</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="inicio_jornada">Início da Jornada de Desenvolvimento*</label>
+                            <textarea id="inicio_jornada" name="inicio_jornada" class="form-control" required></textarea>
+                            <div id="inicio_jornada-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="desenvolvimento_permanente">Desenvolvimento Permanente*</label>
+                            <textarea id="desenvolvimento_permanente" name="desenvolvimento_permanente" class="form-control" required></textarea>
+                            <div id="desenvolvimento_permanente-error" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resultados Alcançados -->
+                <div class="form-section">
+                    <h2>Resultados Alcançados</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="jobs_desenvolvidos">Jobs Desenvolvidos</label>
+                            <textarea id="jobs_desenvolvidos" name="jobs_desenvolvidos" class="form-control"></textarea>
+                        </div>
+                        
+                        <h3>Pitchs dos Projetos Integradores</h3>
+                        <div class="semester-container">
+                            <div class="form-group">
+                                <label for="pitch_1_semestre">1º Semestre</label>
+                                <textarea id="pitch_1_semestre" name="pitch_1_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_2_semestre">2º Semestre</label>
+                                <textarea id="pitch_2_semestre" name="pitch_2_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_3_semestre">3º Semestre</label>
+                                <textarea id="pitch_3_semestre" name="pitch_3_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_4_semestre">4º Semestre</label>
+                                <textarea id="pitch_4_semestre" name="pitch_4_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_5_semestre">5º Semestre</label>
+                                <textarea id="pitch_5_semestre" name="pitch_5_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_6_semestre">6º Semestre</label>
+                                <textarea id="pitch_6_semestre" name="pitch_6_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_7_semestre">7º Semestre</label>
+                                <textarea id="pitch_7_semestre" name="pitch_7_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_8_semestre">8º Semestre</label>
+                                <textarea id="pitch_8_semestre" name="pitch_8_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_9_semestre">9º Semestre</label>
+                                <textarea id="pitch_9_semestre" name="pitch_9_semestre" class="form-control"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pitch_10_semestre">10º Semestre</label>
+                                <textarea id="pitch_10_semestre" name="pitch_10_semestre" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="link_tcc">Link do TCC</label>
+                            <input type="url" id="link_tcc" name="link_tcc" class="form-control" placeholder="https://...">
+                            <div id="link_tcc-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="acoes_voluntarias">Ações Voluntárias</label>
+                            <textarea id="acoes_voluntarias" name="acoes_voluntarias" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <!-- Mude type="button" para type="submit" -->
+                    <!-- Adicione name="preview" e um value qualquer (ex: "true") -->
+                    <button type="submit" name="preview" value="true" id="preview-pdf" class="btn btn-primary">Visualizar</button> 
+                    
+                    <!-- Este botão continua como estava -->
+                    <button type="submit" class="btn btn-success">Salvar e Gerar PDF</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

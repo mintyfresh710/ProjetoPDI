@@ -1,0 +1,84 @@
+:root{
+    --welcome-color: rgb(226, 226, 226);
+    --button-color: rgba(42, 134, 255);
+    --text-button-color: white;
+    --text-button-hover: black;
+}
+
+.home{
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+body{
+    overflow: hidden;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.body-welcome-first{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--welcome-color);
+    padding-top: 55px;
+    text-align: center;
+    padding-bottom: 55px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 0px;
+    z-index: 10;
+    border-radius: 25px;
+}
+
+
+.body-welcome-first h1{
+    font-weight: bold;
+    text-align: center;
+}
+
+.body-welcome{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    background-color: var(--welcome-color);
+    padding-top: 55px;
+    text-align: center;
+    padding-bottom: 55px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 50px;
+    z-index: 10;
+    border-radius: 25px;
+}
+
+.body-welcome h1{
+    font-weight: bold;
+    text-align: center;
+}
+
+.button-plan a{
+    color: var(--text-button-color);
+    text-decoration: none;
+    background-color: var(--button-color);
+    padding: 10px;
+    transition: 0.3s;
+    border: solid 3px var(--button-color);
+    border-radius: 12px;
+}
+
+.button-plan :hover{
+    color: var(--text-button-hover);
+    transition: 0.3s;
+    background-color: var(--welcome-color);
+    border: solid 3px var(--button-color);
+}
