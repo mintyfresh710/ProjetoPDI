@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Conta{% endblock %}
+
+{% block header %}Minha Conta{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/conta.css' %}">
+<div class="account-content">
+    <h3>Informações da Conta</h3>
+    <p>Esta é a página de gerenciamento da sua conta.</p>
+    
+    <div class="account-details">
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <h4>{{ usuario_id }} </h4>
+                    <p>joao.silva@exemplo.com</p>
+                    <p>Membro desde: 01/01/2025</p>
+                </div>
+            </div>
+            
+            <div class="account-actions">
+                <button class="btn-primary">Editar Perfil</button>
+                <button class="btn-secondary">Alterar Senha</button>
+            </div>
+        </div>
+        
+        <div class="account-settings">
+            <h4>Configurações da Conta</h4>
+            <div class="settings-item">
+                <span>Notificações por e-mail</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <span>Autenticação em duas etapas</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="settings-item">
+                <span>Mostrar atividade recente</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
