@@ -14,9 +14,11 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plano de Desenvolvimento Individual Profissional - PDI</title>
     <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+    
 </head>
 <body>
     <div class="form_container">
@@ -50,12 +52,6 @@
                             <input type="text" id="curso" name="curso" class="form-control" required>
                             <div id="curso-error" class="error-message"></div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="linkedin">LinkedIn (URL)</label>
-                            <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/seu-perfil">
-                            <div id="linkedin-error" class="error-message"></div>
-                        </div>
                     </div>
                 </div>
                 
@@ -64,7 +60,7 @@
                     <h2>Perfil e Competências</h2>
                     <div class="section-content">
                         <div class="form-group">
-                            <label for="perfil">Perfil Comportamental (Plataforma Workalove)*</label>
+                            <label for="perfil">Perfil*</label>
                             <textarea id="perfil" name="perfil" class="form-control" required></textarea>
                             <div id="perfil-error" class="error-message"></div>
                         </div>
@@ -74,14 +70,58 @@
                             <textarea id="competencias" name="competencias" class="form-control" required></textarea>
                             <div id="competencias-error" class="error-message"></div>
                         </div>
-                    
+                        
+                        <div class="form-group">
+                            <label for="gaps">Gaps a serem trabalhados*</label>
+                            <textarea id="gaps" name="gaps" class="form-control" required></textarea>
+                            <div id="gaps-error" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Minhas Conquistas -->
+                <div class="form-section">
+                    <h2>Minhas Conquistas</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn (URL)</label>
+                            <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/seu-perfil">
+                            <div id="linkedin-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="certificados">Certificados</label>
+                            <textarea id="certificados" name="certificados" class="form-control" placeholder="Liste seus certificados, um por linha"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jornada de Desenvolvimento -->
+                <div class="form-section">
+                    <h2>Jornada de Desenvolvimento</h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="inicio_jornada">Início da Jornada de Desenvolvimento*</label>
+                            <textarea id="inicio_jornada" name="inicio_jornada" class="form-control" required></textarea>
+                            <div id="inicio_jornada-error" class="error-message"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="desenvolvimento_permanente">Desenvolvimento Permanente*</label>
+                            <textarea id="desenvolvimento_permanente" name="desenvolvimento_permanente" class="form-control" required></textarea>
+                            <div id="desenvolvimento_permanente-error" class="error-message"></div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Resultados Alcançados -->
                 <div class="form-section">
-                    <h2>Projetos Realizados</h2>
+                    <h2>Resultados Alcançados</h2>
                     <div class="section-content">
+                        <div class="form-group">
+                            <label for="jobs_desenvolvidos">Jobs Desenvolvidos</label>
+                            <textarea id="jobs_desenvolvidos" name="jobs_desenvolvidos" class="form-control"></textarea>
+                        </div>
                         
                         <h3>Pitchs dos Projetos Integradores</h3>
                         <div class="semester-container">
@@ -142,6 +182,10 @@
                             <div id="link_tcc-error" class="error-message"></div>
                         </div>
                         
+                        <div class="form-group">
+                            <label for="acoes_voluntarias">Ações Voluntárias</label>
+                            <textarea id="acoes_voluntarias" name="acoes_voluntarias" class="form-control"></textarea>
+                        </div>
                     </div>
                 </div>
                 

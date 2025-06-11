@@ -30,7 +30,12 @@ def salvar_pdi(request):
         curso = request.POST.get('curso')
         perfil = request.POST.get('perfil')
         competencias = request.POST.get('competencias')
+        gaps = request.POST.get('gaps')
         linkedin = request.POST.get('linkedin')
+        certificados = request.POST.get('certificados')
+        inicio_jornada = request.POST.get('inicio_jornada')
+        desenvolvimento_permanente = request.POST.get('desenvolvimento_permanente')
+        jobs_desenvolvidos = request.POST.get('jobs_desenvolvidos')
         
         # Extrair dados dos pitchs por semestre
         pitch_1_semestre = request.POST.get('pitch_1_semestre')
@@ -45,6 +50,7 @@ def salvar_pdi(request):
         pitch_10_semestre = request.POST.get('pitch_10_semestre')
         
         link_tcc = request.POST.get('link_tcc')
+        acoes_voluntarias = request.POST.get('acoes_voluntarias')
         
         # Criar ou atualizar o PDI
         pdi = PDI(
@@ -53,7 +59,12 @@ def salvar_pdi(request):
             curso=curso,
             perfil=perfil,
             competencias=competencias,
+            gaps=gaps,
             linkedin=linkedin,
+            certificados=certificados,
+            inicio_jornada=inicio_jornada,
+            desenvolvimento_permanente=desenvolvimento_permanente,
+            jobs_desenvolvidos=jobs_desenvolvidos,
             pitch_1_semestre=pitch_1_semestre,
             pitch_2_semestre=pitch_2_semestre,
             pitch_3_semestre=pitch_3_semestre,
@@ -64,7 +75,8 @@ def salvar_pdi(request):
             pitch_8_semestre=pitch_8_semestre,
             pitch_9_semestre=pitch_9_semestre,
             pitch_10_semestre=pitch_10_semestre,
-            link_tcc=link_tcc
+            link_tcc=link_tcc,
+            acoes_voluntarias=acoes_voluntarias
         )
         pdi.save()
         
@@ -159,8 +171,7 @@ def gerar_pdf(request, pdi_id):
     info_data = [
         ["Nome:", pdi.nome],
         ["RA:", pdi.ra],
-        ["Curso:", pdi.curso],
-        ["Linkedin:", pdi.linkedin]
+        ["Curso:", pdi.curso]
     ]
     info_table = Table(info_data, colWidths=[3*cm, 12*cm])
     info_table.setStyle(TableStyle([
@@ -176,16 +187,49 @@ def gerar_pdf(request, pdi_id):
     
     # Perfil e Competências
     elements.append(Paragraph("PERFIL E COMPETÊNCIAS", heading2_style))
-    elements.append(Paragraph("PERFIL COMPORTAMENTAL", section_title_style))
+    elements.append(Paragraph("PERFIL", section_title_style))
     elements.append(Paragraph(pdi.perfil.replace('\n', '<br/>'), normal_style))
     elements.append(Spacer(1, 0.5*cm))
     
     elements.append(Paragraph("COMPETÊNCIAS", section_title_style))
     elements.append(Paragraph(pdi.competencias.replace('\n', '<br/>'), normal_style))
     elements.append(Spacer(1, 0.5*cm))
-     
+    
+    # Plano de Desenvolvimento
+    elements.append(Paragraph("PLANO DE DESENVOLVIMENTO", heading2_style))
+    elements.append(Paragraph("GAPS A SEREM TRABALHADOS", section_title_style))
+    elements.append(Paragraph(pdi.gaps.replace('\n', '<br/>'), normal_style))
+    elements.append(Spacer(1, 0.5*cm))
+    
+    # Minhas Conquistas
+    elements.append(Paragraph("MINHAS CONQUISTAS", heading2_style))
+    
+    if pdi.linkedin:
+        elements.append(Paragraph("LINKEDIN", section_title_style))
+        elements.append(Paragraph(pdi.linkedin, normal_style))
+        elements.append(Spacer(1, 0.5*cm))
+    
+    if pdi.certificados:
+        elements.append(Paragraph("CERTIFICADOS", section_title_style))
+        elements.append(Paragraph(pdi.certificados.replace('\n', '<br/>'), normal_style))
+        elements.append(Spacer(1, 0.5*cm))
+    
+    # Jornada de Desenvolvimento
+    elements.append(Paragraph("INÍCIO DA JORNADA DE DESENVOLVIMENTO", heading2_style))
+    elements.append(Paragraph(pdi.inicio_jornada.replace('\n', '<br/>'), normal_style))
+    elements.append(Spacer(1, 0.5*cm))
+    
+    elements.append(Paragraph("DESENVOLVIMENTO PERMANENTE", heading2_style))
+    elements.append(Paragraph(pdi.desenvolvimento_permanente.replace('\n', '<br/>'), normal_style))
+    elements.append(Spacer(1, 0.5*cm))
+    
     # Resultados Alcançados
-    elements.append(Paragraph("PROJETOS REALIZADOS", heading2_style))
+    elements.append(Paragraph("RESULTADOS ALCANÇADOS", heading2_style))
+    
+    if pdi.jobs_desenvolvidos:
+        elements.append(Paragraph("JOBS DESENVOLVIDOS", section_title_style))
+        elements.append(Paragraph(pdi.jobs_desenvolvidos.replace('\n', '<br/>'), normal_style))
+        elements.append(Spacer(1, 0.5*cm))
     
     # Pitchs dos Projetos Integradores
     elements.append(Paragraph("PITCHS DOS PROJETOS INTEGRADORES", section_title_style))
@@ -245,6 +289,11 @@ def gerar_pdf(request, pdi_id):
         elements.append(Paragraph("LINK DO TCC", section_title_style))
         elements.append(Paragraph(pdi.link_tcc, normal_style))
         elements.append(Spacer(1, 0.5*cm))
+    
+    if pdi.acoes_voluntarias:
+        elements.append(Paragraph("AÇÕES VOLUNTÁRIAS", section_title_style))
+        elements.append(Paragraph(pdi.acoes_voluntarias.replace('\n', '<br/>'), normal_style))
+    
     # Rodapé
     import datetime
     elements.append(Spacer(1, 1*cm))
