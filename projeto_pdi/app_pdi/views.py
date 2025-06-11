@@ -61,6 +61,7 @@ def login_view(request):
         try:
             usuario = Usuarios.objects.get(email=email)
             if check_password(senha, usuario.senha):
+                request.session['usuario_id'] = usuario.id_usuario
                 return redirect("app_pdi:home")
             else:
                 erro = "Senha incorreta"
@@ -76,5 +77,19 @@ def plano_individual(request):
     return render(request, 'plano_individual.html')
 
 def conta(request):
-    """View para a página de conta do usuário"""
-    return render(request, 'conta.html')
+    try:
+        
+        usuario_id = request.session.get('usuario_id')
+        if not usuario_id:
+            return redirect('login')
+
+        usuario = Usuarios.objects.get(id_usuario=usuario_id)
+
+        context = {
+            'nome': usuario.nome,
+            'email': usuario.email,
+        }
+        return render(request, 'conta.html', context)
+
+    except Usuarios.DoesNotExist:
+        return redirect('login')
