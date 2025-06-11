@@ -9,6 +9,6 @@ urlpatterns = [
     path('home/', views.show_home, name='home'),
     path('login/submit/', views.login_view, name='login_submit'),
     path('cadastro/submit/', views.cadastro_view, name='cadastro_submit'),
-    path('plano-individual/', views.plano_individual, name='plano_individual'),
-    path('conta/', views.conta, name='conta'),
+    path('plano-individual/', views.show_pi, name='plano_individual'),
+    path('conta/', views.show_conta, name='conta'),
 ]

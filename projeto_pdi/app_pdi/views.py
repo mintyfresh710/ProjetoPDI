@@ -15,6 +15,31 @@ def show_cadastro(request):
 def show_home(request):
     return render(request, 'home.html', {'page': 'home'})
 
+def show_pi(request):
+    """View para a página de plano individual"""
+    return render(request, 'plano_individual.html')
+
+def show_conta(request):
+    try:
+        usuario_id = request.session.get('usuario_id')
+        if not usuario_id:
+            return redirect('login')
+
+        usuario = Usuarios.objects.get(id_usuario=usuario_id)
+
+        data_apenas = usuario.data_criacao_conta.date()
+
+        context = {
+            'nome': usuario.nome,
+            'email': usuario.email,
+            'data': data_apenas,
+        }
+
+        return render(request, 'conta.html', context)
+
+    except Usuarios.DoesNotExist:
+        return redirect('login')
+
 def cadastro_view(request):
 
     if request.method == "POST":
@@ -72,24 +97,3 @@ def login_view(request):
 
     return render(request, "index.html")
 
-def plano_individual(request):
-    """View para a página de plano individual"""
-    return render(request, 'plano_individual.html')
-
-def conta(request):
-    try:
-        
-        usuario_id = request.session.get('usuario_id')
-        if not usuario_id:
-            return redirect('login')
-
-        usuario = Usuarios.objects.get(id_usuario=usuario_id)
-
-        context = {
-            'nome': usuario.nome,
-            'email': usuario.email,
-        }
-        return render(request, 'conta.html', context)
-
-    except Usuarios.DoesNotExist:
-        return redirect('login')
