@@ -21,6 +21,9 @@
                     <p><strong>Nome:</strong> {{ pdi.nome }}</p>
                     <p><strong>RA:</strong> {{ pdi.ra }}</p>
                     <p><strong>Curso:</strong> {{ pdi.curso }}</p>
+                    {% if pdi.linkedin %}
+                    <p><strong>LinkedIn:</strong> <a href="{{ pdi.linkedin }}" target="_blank">{{ pdi.linkedin }}</a></p>
+                    {% endif %}
                 </div>
             </div>
             
@@ -33,43 +36,13 @@
                     <p><strong>Competências:</strong></p>
                     <p>{{ pdi.competencias|linebreaks }}</p>
                     
-                    <p><strong>Gaps a serem trabalhados:</strong></p>
-                    <p>{{ pdi.gaps|linebreaks }}</p>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2>Minhas Conquistas</h2>
-                <div class="section-content">
-                    {% if pdi.linkedin %}
-                    <p><strong>LinkedIn:</strong> <a href="{{ pdi.linkedin }}" target="_blank">{{ pdi.linkedin }}</a></p>
-                    {% endif %}
                     
-                    {% if pdi.certificados %}
-                    <p><strong>Certificados:</strong></p>
-                    <p>{{ pdi.certificados|linebreaks }}</p>
-                    {% endif %}
                 </div>
             </div>
-            
+
             <div class="form-section">
-                <h2>Jornada de Desenvolvimento</h2>
+                <h2>Projetos Realizados</h2>
                 <div class="section-content">
-                    <p><strong>Início da Jornada de Desenvolvimento:</strong></p>
-                    <p>{{ pdi.inicio_jornada|linebreaks }}</p>
-                    
-                    <p><strong>Desenvolvimento Permanente:</strong></p>
-                    <p>{{ pdi.desenvolvimento_permanente|linebreaks }}</p>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h2>Resultados Alcançados</h2>
-                <div class="section-content">
-                    {% if pdi.jobs_desenvolvidos %}
-                    <p><strong>Jobs Desenvolvidos:</strong></p>
-                    <p>{{ pdi.jobs_desenvolvidos|linebreaks }}</p>
-                    {% endif %}
                     
                     <h3>Pitchs dos Projetos Integradores</h3>
                     <div class="semester-container">
@@ -146,11 +119,6 @@
                     
                     {% if pdi.link_tcc %}
                     <p><strong>Link do TCC:</strong> <a href="{{ pdi.link_tcc }}" target="_blank">{{ pdi.link_tcc }}</a></p>
-                    {% endif %}
-                    
-                    {% if pdi.acoes_voluntarias %}
-                    <p><strong>Ações Voluntárias:</strong></p>
-                    <p>{{ pdi.acoes_voluntarias|linebreaks }}</p>
                     {% endif %}
                 </div>
             </div>

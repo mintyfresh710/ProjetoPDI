@@ -1,90 +1,37 @@
+/* Estilos para o formulário PDI */
 :root {
     --primary-color: #3498db;
-    --primary-color-hover: #2980b9;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
     --light-color: #ecf0f1;
     --dark-color: #34495e;
     --success-color: #2ecc71;
-    --success-color-hover: #27ae60;
-    --body-text-color: #333333;
-    --background-color: #f5f5f5;
-    --border-color: #dddddd;
-    --box-shadow-color: rgba(0, 0, 0, 0.1);
-    --footer-text-color: #777777;
-    --border-radius: 4px;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.15s ease-in-out;
-
-    --btn-text-color: #fff;
-    --btn-border-transparent: transparent;
-    --btn-box-shadow-focus: rgba(52, 152, 219, 0.2);
-    --pdf-bg-color: #fff;
-    --pdf-section-border-color: var(--primary-color);
-    --fadeIn-from-opacity: 0;
-    --fadeIn-from-transform: translateY(20px);
-    --fadeIn-to-opacity: 1;
-    --fadeIn-to-transform: translateY(0);
+    --warning-color: #f39c12;
 }
 
-:root.dark-theme {
-    --primary-color: #3498db;
-    --primary-color-hover: #3a7bc8;
-    --secondary-color: #2980b9;
-    --accent-color: #e74c3c;
-    --body-text-color: white;
-    --text-color: #fdfcfc;
-    --background-color: #353535;
-    --white-color: #414141;
-    --dark-color: #e0e0e0;
-    --border-color: #555555;
-    --box-shadow-color: rgba(0, 0, 0, 0.4);
-    --footer-text-color: #bbbbbb;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --transition: all 0.3s ease-in-out;
-
-    --btn-secondary-bg: #555555;
-    --btn-secondary-bg-hover: #444444;
-    --slider-bg-off: #666666;
-    --slider-bg-on: var(--secondary-color);
-    --settings-border-color: #555555;
-
-    --header-bg: #12343b;
-    --header-text: #e0e0e0;
-
-    --form-container-bg: var(--white-color);
-    --pdf-bg-color: #414141;
-    --form-section-border: var(--border-color);
-}
-
-
-/* Estilos base */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
-    color: var(--body-text-color);
-    background-color: var(--background-color);
+    color: #333;
+    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
 }
 
-/* Container do formulário */
 .form_container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Cabeçalho */
 .header {
     background-color: var(--primary-color);
-    color: var(--btn-text-color);
+    color: white;
     text-align: center;
     padding: 2rem 0;
     margin-bottom: 2rem;
     border-radius: 0 0 10px 10px;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header h1 {
@@ -98,20 +45,18 @@ body {
     opacity: 0.9;
 }
 
-/* Container do formulário */
 .form-container {
-    background-color: var(--pdf-bg-color);
+    background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 20px var(--box-shadow-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 2rem;
     margin-bottom: 2rem;
 }
 
-/* Seções do formulário */
 .form-section {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #eee;
 }
 
 .form-section:last-child {
@@ -126,7 +71,6 @@ body {
     border-bottom: 2px solid var(--primary-color);
 }
 
-/* Grupos de formulário */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -138,20 +82,19 @@ body {
     color: var(--dark-color);
 }
 
-/* Controles do formulário */
 .form-control {
     width: 100%;
     padding: 0.75rem;
     font-size: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border: 1px solid #ddd;
+    border-radius: 4px;
     transition: border-color 0.3s;
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 3px var(--btn-box-shadow-focus);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 textarea.form-control {
@@ -159,14 +102,12 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* Layout de semestres */
 .semester-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
 }
 
-/* Botões */
 .btn {
     display: inline-block;
     font-weight: 600;
@@ -174,35 +115,35 @@ textarea.form-control {
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: 1px solid var(--btn-border-transparent);
+    border: 1px solid transparent;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+    border-radius: 4px;
+    transition: all 0.15s ease-in-out;
     cursor: pointer;
 }
 
 .btn-primary {
-    color: var(--btn-text-color);
+    color: #fff;
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-color-hover);
-    border-color: var(--primary-color-hover);
+    background-color: #2980b9;
+    border-color: #2980b9;
 }
 
 .btn-success {
-    color: var(--btn-text-color);
+    color: #fff;
     background-color: var(--success-color);
     border-color: var(--success-color);
 }
 
 .btn-success:hover {
-    background-color: var(--success-color-hover);
-    border-color: var(--success-color-hover);
+    background-color: #27ae60;
+    border-color: #27ae60;
 }
 
 .btn-block {
@@ -210,65 +151,17 @@ textarea.form-control {
     width: 100%;
 }
 
-/* Ações do formulário */
 .actions {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
 }
 
-/* Mensagens de erro */
 .error-message {
     color: var(--accent-color);
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
-
-/* Estilos para PDF */
-.pdf-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--pdf-bg-color);
-}
-
-.pdf-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.pdf-section {
-    margin-bottom: 30px;
-}
-
-.pdf-section h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--pdf-section-border-color);
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
-
-.pdf-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: var(--footer-text-color);
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from { opacity: var(--fadeIn-from-opacity); transform: var(--fadeIn-from-transform); }
-    to { opacity: var(--fadeIn-to-opacity); transform: var(--fadeIn-to-transform); }
-}
-
-.form-section {
-    animation: fadeIn 0.5s ease-out forwards;
-}
-
-.form-section:nth-child(2) { animation-delay: 0.1s; }
-.form-section:nth-child(3) { animation-delay: 0.2s; }
-.form-section:nth-child(4) { animation-delay: 0.3s; }
-.form-section:nth-child(5) { animation-delay: 0.4s; }
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -283,4 +176,50 @@ textarea.form-control {
     .actions .btn {
         margin-bottom: 1rem;
     }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-section:nth-child(2) { animation-delay: 0.1s; }
+.form-section:nth-child(3) { animation-delay: 0.2s; }
+.form-section:nth-child(4) { animation-delay: 0.3s; }
+.form-section:nth-child(5) { animation-delay: 0.4s; }
+
+/* Estilos para o PDF gerado */
+.pdf-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+.pdf-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pdf-section {
+    margin-bottom: 30px;
+}
+
+.pdf-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.pdf-footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #777;
 }
