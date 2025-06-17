@@ -12,6 +12,12 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.units import cm
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from io import BytesIO
+from django.template.loader import render_to_string
+import pdfkit
+
+# Configurar o caminho para o executável wkhtmltopdf
+# Isso é necessário porque o pdfkit pode não encontrá-lo automaticamente em alguns ambientes
+config = pdfkit.configuration(wkhtmltopdf="C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf")
 
 def formulario(request):
     """
@@ -30,7 +36,13 @@ def salvar_pdi(request):
         curso = request.POST.get('curso')
         perfil = request.POST.get('perfil')
         competencias = request.POST.get('competencias')
+        gaps = request.POST.get('gaps', '')
         linkedin = request.POST.get('linkedin')
+        certificados = request.POST.get('certificados', '')
+        inicio_jornada = request.POST.get('inicio_jornada', '')
+        desenvolvimento_permanente = request.POST.get('desenvolvimento_permanente', '')
+        jobs_desenvolvidos = request.POST.get('jobs_desenvolvidos', '')
+        acoes_voluntarias = request.POST.get('acoes_voluntarias', '')
         
         # Extrair dados dos pitchs por semestre
         pitch_1_semestre = request.POST.get('pitch_1_semestre')
@@ -53,7 +65,12 @@ def salvar_pdi(request):
             curso=curso,
             perfil=perfil,
             competencias=competencias,
+            gaps=gaps,
             linkedin=linkedin,
+            certificados=certificados,
+            inicio_jornada=inicio_jornada,
+            desenvolvimento_permanente=desenvolvimento_permanente,
+            jobs_desenvolvidos=jobs_desenvolvidos,
             pitch_1_semestre=pitch_1_semestre,
             pitch_2_semestre=pitch_2_semestre,
             pitch_3_semestre=pitch_3_semestre,
@@ -64,7 +81,8 @@ def salvar_pdi(request):
             pitch_8_semestre=pitch_8_semestre,
             pitch_9_semestre=pitch_9_semestre,
             pitch_10_semestre=pitch_10_semestre,
-            link_tcc=link_tcc
+            link_tcc=link_tcc,
+            acoes_voluntarias=acoes_voluntarias
         )
         pdi.save()
         
@@ -90,7 +108,44 @@ def visualizar_pdi(request, pdi_id):
 
 def gerar_pdf(request, pdi_id):
     """
-    Gera o PDF personalizado com os dados do PDI usando ReportLab
+    Gera o PDF personalizado com os dados do PDI usando template HTML estilizado
+    """
+    pdi = get_object_or_404(PDI, id=pdi_id)
+    
+    # Renderizar o template HTML com os dados do PDI
+    html_string = render_to_string('pdi_form/pdf_template_estilizado.html', {'pdi': pdi})
+    
+    # Configurações para o wkhtmltopdf
+    options = {
+        'page-size': 'A4',
+        'margin-top': '0.75in',
+        'margin-right': '0.75in',
+        'margin-bottom': '0.75in',
+        'margin-left': '0.75in',
+        'encoding': "UTF-8",
+        'no-outline': None,
+        'enable-local-file-access': None,
+        'print-media-type': None,
+    }
+    
+    try:
+        # Gerar o PDF usando pdfkit, passando a configuração com o caminho do wkhtmltopdf
+        pdf = pdfkit.from_string(html_string, False, options=options, configuration=config)
+        
+        # Criar a resposta HTTP com o PDF
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="PDI-{pdi.nome}-{pdi.ra}.pdf"'
+        
+        return response
+        
+    except Exception as e:
+        # Fallback para o método original se houver erro
+        print(f"Erro ao gerar PDF com wkhtmltopdf: {e}")
+        return gerar_pdf_reportlab(request, pdi_id)
+
+def gerar_pdf_reportlab(request, pdi_id):
+    """
+    Gera o PDF personalizado com os dados do PDI usando ReportLab (método original)
     """
     pdi = get_object_or_404(PDI, id=pdi_id)
     
