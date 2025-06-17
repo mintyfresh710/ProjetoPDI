@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Editar Perfil</h3>
+<form method="POST">
+    {% csrf_token %}
+    <label>Nome:</label><input type="text" name="nome" value="{{ usuario.nome }}"><br>
+    <label>Email:</label><input type="email" name="email" value="{{ usuario.email }}"><br>
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}
