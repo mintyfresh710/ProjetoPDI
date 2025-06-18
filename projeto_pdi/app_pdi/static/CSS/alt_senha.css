@@ -1,0 +1,141 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --text-color: #555555;
+  --background-color: #f8f9fa;
+  --container-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-text: #555555;
+  --label-color: #555555;
+  --btn-bg: var(--secondary-color);
+  --btn-text: #ffffff;
+  --btn-hover: #3a7bc8;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+  --btn-back-size: 32px;
+}
+
+:root.dark-theme {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --text-color: #fdfcfc;
+  --background-color: #353535;
+  --container-bg: #414141;
+  --input-bg: #555555;
+  --input-text: #fdfcfc;
+  --label-color: #ddd;
+  --btn-bg: var(--secondary-color);
+  --btn-text: #ffffff;
+  --btn-hover: #3a7bc8;
+  --border-color: #555555;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --radius: 8px;
+  --btn-back-size: 32px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.change-password-container {
+  background-color: var(--container-bg);
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--input-text);
+  position: relative;
+}
+
+.change-password-container h3 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.change-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.change-password-form label {
+  font-weight: 500;
+  color: var(--label-color);
+}
+
+.change-password-form input[type="password"] {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.change-password-form input[type="password"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+button[type="submit"] {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* Botão voltar */
+.back-button {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: var(--btn-back-size);
+  height: var(--btn-back-size);
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.back-button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Triângulo branco apontando para a esquerda */
+.back-button::before {
+  content: "";
+  display: inline-block;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 6px 8px 6px 0;
+  border-color: transparent white transparent transparent;
+}
