@@ -9,35 +9,82 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'CSS/pi.css' %}">
 <script src="{% static 'js/theme-toggle.js' %}"></script>
-<div class="plan-individual-content">
-    <h3>Seu Plano Individual</h3>
-    
-    <div class="plan-details">
-        <div class="plan-card">
-            <h4>Plano Atual</h4>
-            <div class="plan-info">
-                <p><strong>Tipo:</strong> Premium</p>
-                <p><strong>Data de início:</strong> 01/01/2025</p>
-                <p><strong>Validade:</strong> 31/12/2025</p>
-                <p><strong>Status:</strong> <span class="status-active">Ativo</span></p>
-            </div>
-        </div>
+<script src="{% static 'js/5w2h.js' %}"></script>
+
+    <div class="w2h-section">
+        <h3>Planejamento 5W2H</h3>
+        <p class="w2h-description">Use a metodologia 5W2H para estruturar e organizar seus planos de desenvolvimento individual.</p>
         
-        <div class="plan-usage">
-            <h4>Utilização</h4>
-            <div class="usage-item">
-                <span>Armazenamento</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 65%;"></div>
+        <div class="w2h-container">
+            <div class="w2h-form">
+                <div class="w2h-item">
+                    <label for="what">
+                        <span class="w2h-label">WHAT</span>
+                        <span class="w2h-question">O que será feito?</span>
+                    </label>
+                    <textarea id="what" name="what" placeholder="Descreva o que você pretende fazer ou alcançar..."></textarea>
                 </div>
-                <span>65%</span>
+
+                <div class="w2h-item">
+                    <label for="why">
+                        <span class="w2h-label">WHY</span>
+                        <span class="w2h-question">Por que será feito?</span>
+                    </label>
+                    <textarea id="why" name="why" placeholder="Explique a justificativa e os motivos..."></textarea>
+                </div>
+
+                <div class="w2h-item">
+                    <label for="who">
+                        <span class="w2h-label">WHO</span>
+                        <span class="w2h-question">Quem fará?</span>
+                    </label>
+                    <textarea id="who" name="who" placeholder="Identifique os responsáveis e envolvidos..."></textarea>
+                </div>
+
+                <div class="w2h-item">
+                    <label for="when">
+                        <span class="w2h-label">WHEN</span>
+                        <span class="w2h-question">Quando será feito?</span>
+                    </label>
+                    <textarea id="when" name="when" placeholder="Defina prazos, cronograma e marcos..."></textarea>
+                </div>
+
+                <div class="w2h-item">
+                    <label for="where">
+                        <span class="w2h-label">WHERE</span>
+                        <span class="w2h-question">Onde será feito?</span>
+                    </label>
+                    <textarea id="where" name="where" placeholder="Especifique locais, ambientes ou contextos..."></textarea>
+                </div>
+
+                <div class="w2h-item">
+                    <label for="how">
+                        <span class="w2h-label">HOW</span>
+                        <span class="w2h-question">Como será feito?</span>
+                    </label>
+                    <textarea id="how" name="how" placeholder="Descreva métodos, processos e estratégias..."></textarea>
+                </div>
+
+                <div class="w2h-item">
+                    <label for="howmuch">
+                        <span class="w2h-label">HOW MUCH</span>
+                        <span class="w2h-question">Quanto custará?</span>
+                    </label>
+                    <textarea id="howmuch" name="howmuch" placeholder="Estime custos, recursos necessários e investimentos..."></textarea>
+                </div>
             </div>
-            <div class="usage-item">
-                <span>Projetos</span>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 40%;"></div>
+
+            <div class="w2h-actions">
+                <button type="button" class="btn-save" onclick="save5W2H()">Salvar Planejamento</button>
+                <button type="button" class="btn-clear" onclick="clear5W2H()">Limpar Campos</button>
+                <button type="button" class="btn-export" onclick="export5W2H()">Exportar PDF</button>
+            </div>
+
+            <div class="w2h-saved-plans">
+                <h4>Planos Salvos</h4>
+                <div id="savedPlansList" class="saved-plans-list">
+                    <p class="no-plans">Nenhum plano salvo ainda.</p>
                 </div>
-                <span>4/10</span>
             </div>
         </div>
     </div>

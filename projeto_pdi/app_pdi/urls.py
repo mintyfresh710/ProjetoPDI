@@ -11,4 +11,6 @@ urlpatterns = [
     path('cadastro/submit/', views.cadastro_view, name='cadastro_submit'),
     path('plano-individual/', views.show_pi, name='plano_individual'),
     path('conta/', views.show_conta, name='conta'),
+    path('conta/editar/', views.editar_perfil, name='editar_perfil'),
+    path('conta/senha/', views.alterar_senha, name='alterar_senha'),
 ]

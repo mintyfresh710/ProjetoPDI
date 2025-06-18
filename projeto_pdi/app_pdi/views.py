@@ -35,7 +35,7 @@ def show_conta(request):
             'data': data_apenas,
         }
 
-        return render(request, 'conta.html', context)
+        return render(request, 'conta/conta.html', context)
 
     except Usuarios.DoesNotExist:
         return redirect('login')
@@ -97,3 +97,48 @@ def login_view(request):
 
     return render(request, "index.html")
 
+def editar_perfil(request):
+    usuario_id = request.session.get('usuario_id')
+    if not usuario_id:
+        return redirect('login')
+
+    usuario = Usuarios.objects.get(id_usuario=usuario_id)
+
+    if request.method == "POST":
+        novo_nome = request.POST.get("nome")
+        novo_email = request.POST.get("email")
+
+        if novo_nome:
+            usuario.nome = novo_nome
+        if novo_email:
+            usuario.email = novo_email
+
+        usuario.save()
+        return redirect('conta')
+
+    return render(request, 'conta/editar_perfil.html', {'usuario': usuario})
+
+
+def alterar_senha(request):
+    usuario_id = request.session.get('usuario_id')
+    if not usuario_id:
+        return redirect('login')
+
+    usuario = Usuarios.objects.get(id_usuario=usuario_id)
+
+    if request.method == "POST":
+        senha_atual = request.POST.get("senha_atual")
+        nova_senha = request.POST.get("nova_senha")
+        confirmar_senha = request.POST.get("confirmar_senha")
+
+        if not check_password(senha_atual, usuario.senha):
+            return render(request, "conta/alterar_senha.html", {"erro": "Senha atual incorreta"})
+
+        if nova_senha != confirmar_senha:
+            return render(request, "conta/alterar_senha.html", {"erro": "Senhas não coincidem"})
+
+        usuario.senha = make_password(nova_senha)
+        usuario.save()
+        return redirect('conta')
+
+    return render(request, 'conta/alterar_senha.html')
