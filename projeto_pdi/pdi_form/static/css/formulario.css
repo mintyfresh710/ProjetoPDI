@@ -1,0 +1,394 @@
+:root {
+    --primary-color: #3498db;
+    --primary-color-hover: #2980b9;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --success-color: #2ecc71;
+    --success-color-hover: #27ae60;
+    --body-text-color: #333333;
+    --background-color: #f5f5f5;
+    --border-color: #dddddd;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --footer-text-color: #777777;
+    --border-radius: 4px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.15s ease-in-out;
+
+    --btn-text-color: #fff;
+    --btn-border-transparent: transparent;
+    --btn-box-shadow-focus: rgba(52, 152, 219, 0.2);
+    --pdf-bg-color: #fff;
+    --pdf-section-border-color: var(--primary-color);
+    --fadeIn-from-opacity: 0;
+    --fadeIn-from-transform: translateY(20px);
+    --fadeIn-to-opacity: 1;
+    --fadeIn-to-transform: translateY(0);
+}
+
+:root.dark-theme {
+    --primary-color: #3498db;
+    --primary-color-hover: #3a7bc8;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --body-text-color: white;
+    --text-color: #fdfcfc;
+    --background-color: #353535;
+    --white-color: #414141;
+    --dark-color: #e0e0e0;
+    --border-color: #555555;
+    --box-shadow-color: rgba(0, 0, 0, 0.4);
+    --footer-text-color: #bbbbbb;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --transition: all 0.3s ease-in-out;
+
+    --btn-secondary-bg: #555555;
+    --btn-secondary-bg-hover: #444444;
+    --slider-bg-off: #666666;
+    --slider-bg-on: var(--secondary-color);
+    --settings-border-color: #555555;
+
+    --header-bg: #12343b;
+    --header-text: #e0e0e0;
+
+    --form-container-bg: var(--white-color);
+    --pdf-bg-color: #414141;
+    --form-section-border: var(--border-color);
+}
+
+/* Base */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--body-text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.form_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    color: var(--btn-text-color);
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Form Container */
+.form-container {
+    background-color: var(--pdf-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--box-shadow-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h2 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Delay animações */
+.form-section:nth-child(2) { animation-delay: 0.1s; }
+.form-section:nth-child(3) { animation-delay: 0.2s; }
+.form-section:nth-child(4) { animation-delay: 0.3s; }
+.form-section:nth-child(5) { animation-delay: 0.4s; }
+
+/* Form group */
+.form-group {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Inputs */
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--btn-box-shadow-focus);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid var(--btn-border-transparent);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: var(--btn-text-color);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+.btn-success {
+    color: var(--btn-text-color);
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: var(--success-color-hover);
+    border-color: var(--success-color-hover);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* Semestres */
+.semester-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.semestre-box {
+    position: relative;
+    background: var(--form-container-bg,);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.btn-add-semestre {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-add-semestre:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.btn-remove-semestre {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dark-theme .btn-remove-semestre {
+    color: var(--text-color);
+}
+
+.btn-remove-semestre:hover {
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Erros */
+.error-message {
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+    min-height: 1.2rem;
+}
+
+.is-invalid {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+}
+
+.pitch-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pitch-header h3 {
+    margin: 0;
+    display: inline-block;
+}
+
+.btn-add-semestre {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.btn-add-semestre:hover {
+    background-color: var(--primary-color-hover);
+}
+
+/* Estilo para o header do TCC */
+.tcc-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tcc-header label {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Botão de adicionar TCC */
+.btn-add-tcc {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.btn-add-tcc:hover {
+    background-color: var(--primary-color-hover);
+}
+
+/* Estilo para o header do TCC - igual ao dos semestres */
+.tcc-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tcc-header h3 {
+    margin: 0;
+    display: inline-block;
+    font-size: 1.17em; /* Tamanho igual ao h3 dos semestres */
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Container do campo TCC */
+.tcc-box {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+/* Input do TCC - estilo minimalista */
+.tcc-box .form-control {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    padding-left: 0;
+    background-color: transparent;
+    box-shadow: none;
+    width: 100%;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .semester-container {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions .btn {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from { opacity: var(--fadeIn-from-opacity); transform: var(--fadeIn-from-transform); }
+    to { opacity: var(--fadeIn-to-opacity); transform: var(--fadeIn-to-transform); }
+}
