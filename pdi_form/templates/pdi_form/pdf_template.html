@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Plano de Desenvolvimento Individual Profissional - {{ pdi.nome }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #3498db;
+            font-size: 24pt;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 18pt;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 14pt;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .info-pessoal {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info-pessoal p {
+            margin: 5px 0;
+            font-size: 12pt;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .semester-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .semester-item {
+            margin-bottom: 15px;
+        }
+        .semester-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 9pt;
+            color: #777;
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .ano {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 24pt;
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PLANO DE DESENVOLVIMENTO INDIVIDUAL PROFISSIONAL - PDI</h1>
+    </div>
+    
+    <div class="ano">
+        {% now "Y" %}
+    </div>
+    
+    <div class="info-pessoal">
+        <p><strong>Nome:</strong> {{ pdi.nome }}</p>
+        <p><strong>RA:</strong> {{ pdi.ra }}</p>
+        <p><strong>Curso:</strong> {{ pdi.curso }}</p>
+    </div>
+    
+    <h2>PERFIL E COMPETÊNCIAS</h2>
+    <div class="section">
+        <div class="section-title">PERFIL</div>
+        <p>{{ pdi.perfil|linebreaks }}</p>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">COMPETÊNCIAS</div>
+        <p>{{ pdi.competencias|linebreaks }}</p>
+    </div>
+    
+    <h2>PLANO DE DESENVOLVIMENTO</h2>
+    <div class="section">
+        <div class="section-title">GAPS A SEREM TRABALHADOS</div>
+        <p>{{ pdi.gaps|linebreaks }}</p>
+    </div>
+    
+    <h2>MINHAS CONQUISTAS</h2>
+    {% if pdi.linkedin %}
+    <div class="section">
+        <div class="section-title">LINKEDIN</div>
+        <p><a href="{{ pdi.linkedin }}">{{ pdi.linkedin }}</a></p>
+    </div>
+    {% endif %}
+    
+    {% if pdi.certificados %}
+    <div class="section">
+        <div class="section-title">CERTIFICADOS</div>
+        <p>{{ pdi.certificados|linebreaks }}</p>
+    </div>
+    {% endif %}
+    
+    <h2>INÍCIO DA JORNADA DE DESENVOLVIMENTO</h2>
+    <div class="section">
+        <p>{{ pdi.inicio_jornada|linebreaks }}</p>
+    </div>
+    
+    <h2>DESENVOLVIMENTO PERMANENTE</h2>
+    <div class="section">
+        <p>{{ pdi.desenvolvimento_permanente|linebreaks }}</p>
+    </div>
+    
+    <h2>RESULTADOS ALCANÇADOS</h2>
+    {% if pdi.jobs_desenvolvidos %}
+    <div class="section">
+        <div class="section-title">JOBS DESENVOLVIDOS</div>
+        <p>{{ pdi.jobs_desenvolvidos|linebreaks }}</p>
+    </div>
+    {% endif %}
+    
+    <div class="section">
+        <div class="section-title">PITCHS DOS PROJETOS INTEGRADORES</div>
+        <div class="semester-grid">
+            {% if pdi.pitch_1_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">1° sem</div>
+                <p>{{ pdi.pitch_1_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_2_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">2° sem</div>
+                <p>{{ pdi.pitch_2_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_3_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">3° sem</div>
+                <p>{{ pdi.pitch_3_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_4_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">4° sem</div>
+                <p>{{ pdi.pitch_4_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_5_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">5° sem</div>
+                <p>{{ pdi.pitch_5_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_6_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">6° sem</div>
+                <p>{{ pdi.pitch_6_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_7_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">7° sem</div>
+                <p>{{ pdi.pitch_7_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_8_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">8° sem</div>
+                <p>{{ pdi.pitch_8_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_9_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">9° sem</div>
+                <p>{{ pdi.pitch_9_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+            
+            {% if pdi.pitch_10_semestre %}
+            <div class="semester-item">
+                <div class="semester-title">10° sem</div>
+                <p>{{ pdi.pitch_10_semestre|linebreaks }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% if pdi.link_tcc %}
+    <div class="section">
+        <div class="section-title">LINK DO TCC</div>
+        <p><a href="{{ pdi.link_tcc }}">{{ pdi.link_tcc }}</a></p>
+    </div>
+    {% endif %}
+    
+    {% if pdi.acoes_voluntarias %}
+    <div class="section">
+        <div class="section-title">AÇÕES VOLUNTÁRIAS</div>
+        <p>{{ pdi.acoes_voluntarias|linebreaks }}</p>
+    </div>
+    {% endif %}
+    
+    <div class="footer">
+        <p>PDI gerado em {% now "d/m/Y H:i" %}</p>
+    </div>
+</body>
+</html>
