@@ -1,0 +1,100 @@
+:root {
+    --background-color: #f8f9fa;
+    --container-bg-color: #f8f9fa;
+    --text-color: #555555;
+    --text-button-color: white;
+}
+
+:root.dark-theme {
+    --background-color: #353535;
+    --container-bg-color: #414141;
+    --text-color: #fdfcfc;
+    --text-button-color: #ffffff;
+}
+
+
+body {
+    overflow: hidden;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    color: var(--text-color);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.body-welcome-first {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--container-bg-color);
+    padding-top: 55px;
+    text-align: center;
+    padding-bottom: 55px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 0px;
+    z-index: 10;
+    border-radius: 25px;
+    color: var(--text-color);
+}
+
+.body-welcome-first h1 {
+    font-weight: bold;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.body-welcome {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--container-bg-color);
+    padding-top: 55px;
+    text-align: center;
+    padding-bottom: 55px;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 50px;
+    z-index: 10;
+    border-radius: 25px;
+    color: var(--text-color);
+}
+
+.body-welcome h1 {
+    font-weight: bold;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.button-plan a {
+    color: var(--text-button-color)!important;
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    transition: 0.3s;
+    border: solid 3px var(--secondary-color);
+    border-radius: 12px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.button-plan a:hover {
+    color: var(--secondary-color)!important;
+    background-color: var(--white-color);
+    border: solid 3px var(--secondary-color);
+    transition: 0.3s;
+}
