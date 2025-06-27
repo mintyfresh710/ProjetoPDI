@@ -1,0 +1,229 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9; 
+    --text-color: #555555; 
+    --background-color: #f8f9fa; 
+    --white-color: #ffffff;
+    --border-color: #dee2e6;
+    --header-bg: #0a2f5a;
+    --header-text: #ffffff;
+    --btn-secondary-bg: #6c757d;
+    --btn-secondary-bg-hover: #5a6268;
+    --slider-bg-off: #ccc;
+    --slider-bg-on: var(--secondary-color);
+    --settings-border-color: #eee;
+}
+
+:root.dark-theme {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --text-color: #fdfcfc;
+  --background-color: #353535;
+  --white-color: #414141;
+  --border-color: #555555;
+  --header-bg: #12343b;
+  --header-text: white;
+  --btn-secondary-bg: #555555;
+  --btn-secondary-bg-hover: #444444;
+  --slider-bg-off: #666666;
+  --slider-bg-on: var(--secondary-color);
+  --settings-border-color: #555555;
+}
+
+.content-header{
+    color: var(--header-text);
+}
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.account-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.account-content h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.account-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.profile-section, .account-settings {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-avatar {
+    font-size: 5em;
+    color: var(--secondary-color);
+    margin-right: 20px;
+    line-height: 1;
+}
+
+.profile-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.4em;
+    color: var(--primary-color);
+}
+
+.profile-info p {
+    margin: 3px 0;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+.account-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #3a7bc8; /* Esse tom pode virar uma variável se quiser */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--btn-secondary-bg);
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--btn-secondary-bg-hover);
+    transform: translateY(-2px);
+}
+
+.account-settings h4 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--settings-border-color);
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+}
+
+.settings-item span {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--slider-bg-off);
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--white-color);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--slider-bg-on);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+@media (max-width: 768px) {
+    .account-details {
+        flex-direction: column;
+    }
+    .account-content {
+        margin: 20px;
+        padding: 20px;
+    }
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-avatar {
+        margin-bottom: 15px;
+    }
+    .account-actions {
+        flex-direction: column;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
