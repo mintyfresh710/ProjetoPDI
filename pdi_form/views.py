@@ -17,7 +17,7 @@ import pdfkit
 
 # Configurar o caminho para o executável wkhtmltopdf
 # Isso é necessário porque o pdfkit pode não encontrá-lo automaticamente em alguns ambientes
-config = pdfkit.configuration(wkhtmltopdf="..\.venv\Lib\site-packages\wkhtmltopdf\bin\wkhtmltopdf.exe")
+config = pdfkit.configuration(wkhtmltopdf="..\wkhtmltopdf\bin\wkhtmltopdf.exe")
 
 def formulario(request):
     """
